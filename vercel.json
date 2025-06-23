@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server/production.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/server/production.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/server/production.ts"
+    }
+  ],
+  "domains": [
+    "elpdata.com",
+    "www.elpdata.com"
+  ],
+  "redirects": [
+    {
+      "source": "https://elpdata.com/(.*)",
+      "destination": "https://www.elpdata.com/$1",
+      "permanent": true
+    }
+  ]
+}
